@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.*;
 
+
 public class TicTacToe implements ActionListener{
 
 	Random random = new Random();
@@ -14,7 +15,7 @@ public class TicTacToe implements ActionListener{
 	JLabel textfield = new JLabel();
 	JButton[] buttons = new JButton[9];
 	boolean player1_turn;
-
+        boolean End;
 	TicTacToe(){
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +40,7 @@ public class TicTacToe implements ActionListener{
 		for(int i=0;i<9;i++) {
 			buttons[i] = new JButton();
 			button_panel.add(buttons[i]);
-			buttons[i].setFont(new Font("MV Boli",Font.BOLD,120));
+			buttons[i].setFont(new Font("Calisto MT",Font.BOLD,120));
 			buttons[i].setFocusable(false);
 			buttons[i].addActionListener(this);
 		}
@@ -81,7 +82,7 @@ public class TicTacToe implements ActionListener{
 	public void firstTurn() {
 		
 		try {
-			Thread.sleep(2000);
+			Thread.sleep(200);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -234,4 +235,7 @@ public class TicTacToe implements ActionListener{
 		}
 		textfield.setText("O wins");
 	}
+       // if End = true {
+            // return to main menu
+        //}
 }
