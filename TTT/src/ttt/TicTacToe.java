@@ -7,7 +7,7 @@ import javax.swing.*;
 
 
 public class TicTacToe implements ActionListener{
-
+// Verschillende classes
 	Random random = new Random();
 	JFrame frame = new JFrame();
 	JPanel title_panel = new JPanel();
@@ -15,9 +15,9 @@ public class TicTacToe implements ActionListener{
 	JLabel textfield = new JLabel();
 	JButton[] buttons = new JButton[9];
 	boolean player1_turn;
-        boolean End;
+        boolean End; // Boolean moest gebruikt worden om een reset en menu mogelijk te maken het is mislukt om dat te integreren
 	TicTacToe(){
-		
+		// Generatie window en speelveld
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setSize(640,640);
 		frame.getContentPane().setBackground(new Color(0,0,0));
@@ -54,7 +54,8 @@ public class TicTacToe implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
+		// Maakt de interactie mogelijk dat een speler zijn beurt kan doen,
+		//zorgt er daarna voor dat de andere speler aan de beurt komt
 		for(int i=0;i<9;i++) {
 			if(e.getSource()==buttons[i]) {
 				if(player1_turn) {
@@ -80,14 +81,14 @@ public class TicTacToe implements ActionListener{
 	}
 	
 	public void firstTurn() {
-		
+		// Delay tussen begintext en text die aangeeft welke beurt is
 		try {
 			Thread.sleep(200);
 		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
-		
+		// bepaald en laat zien wie aan de beurt is
 		if(random.nextInt(2)==0) {
 			player1_turn=true;
 			textfield.setText("X turn");
@@ -99,7 +100,7 @@ public class TicTacToe implements ActionListener{
 	}
 	
 	public void check() {
-		//check X win conditions
+		// Per winnende combinatie word gecontroleerd of X of O gewonnen heeft
 		if(
 				(buttons[0].getText()=="X") &&
 				(buttons[1].getText()=="X") &&
@@ -156,7 +157,7 @@ public class TicTacToe implements ActionListener{
 				) {
 			xWins(2,4,6);
 		}
-		//check O win conditions
+		
 		if(
 				(buttons[0].getText()=="O") &&
 				(buttons[1].getText()=="O") &&
@@ -214,7 +215,7 @@ public class TicTacToe implements ActionListener{
 			oWins(2,4,6);
 		}
 	}
-	
+	// Text die tevoorschijn komt als X of O gewonnen heeft
 	public void xWins(int a,int b,int c) {
 		buttons[a].setBackground(Color.GREEN);
 		buttons[b].setBackground(Color.GREEN);
@@ -235,7 +236,5 @@ public class TicTacToe implements ActionListener{
 		}
 		textfield.setText("O wins");
 	}
-       // if End = true {
-            // return to main menu
-        //}
+
 }
